@@ -1,0 +1,399 @@
+function option() {
+    var a = window.location.search;
+    if (a === '?test=') {
+        loginFormHelperTest();
+    } else {
+        loginFormHelper()
+    }
+}
+option();
+
+function loginFormHelper() {
+    function helper() {
+        var refEl = document.querySelectorAll('.l-row')[1]
+        var helper = document.createElement('div');
+        helper.classList.add('l-col-12', 'login-form__column');
+        helper.innerHTML = `
+        <div>
+            <div class="panel panel_role-base login-form__panel">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-12 login-form__column-registration">
+                            <a href="/iris/di/UserRegistration" style="text-decoration:none;color:#212121;font-size:18px;font-weight:500;line-height:20px;font-family:Gerbera">
+                                Зарегистрируйтесь в Личном Кабинете
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel_role-base login-form__panel">
+                
+                <div style="margin: 21px 0;" class="container">
+                    <div class="l-row justify-content-center">
+                        <div style="padding: 6px 0;" class="col col-3">
+                            <div class="control">
+                                <div class="img">
+                                    <img style="width: 60%;" src="/Media/Default/Page/GTM_pixels/img/house.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-9">
+                            <div class="control">
+                                <div class="control-caption control-caption_role-base">
+                                    <h3 class="control-caption__text">Здесь хранятся ваши электронные полисы ОСАГО</h3>
+                                </div>
+                                <div class="control__body">
+                                    <div class="text-box">
+                                        <!-- <p>Здесь можно сделать новый расчет или заявить о страховом случае on-line</p> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               <!-- <div style="margin: 20px 0;" class="container">
+                    <div class="l-row justify-content-center">
+                        <div style="padding: 6px 0;" class="col col-3">
+                            <div class="control">
+                                <div class="img">
+                                    <img style="width: 60%;" src="/Media/Default/Page/GTM_pixels/img/clock.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-9">
+                            <div class="control">
+                                <div class="control-caption control-caption_role-base">
+                                    <h3 class="control-caption__text">Быстрое продление полиса</h3>
+                                </div>
+                                <div class="control__body">
+                                    <div class="text-box">
+                                        <p>Ваши данные уже будет заполнены, вам нужно только проверить</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div style="margin: 21px 0;" class="container">
+                    <div class="l-row justify-content-center">
+                        <div style="padding: 6px 0;" class="col col-3">
+                            <div class="control">
+                                <div class="img">
+                                    <img style="width: 60%;" src="/Media/Default/Page/GTM_pixels/img/sheet.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-9">
+                            <div class="control">
+                                <div class="control-caption control-caption_role-base">
+                                    <h3 class="control-caption__text">Удобное внесение изменений</h3>
+                                </div>
+                                <div class="control__body">
+                                    <div class="text-box">
+                                        <p>Все изменения можно внести онлайн, даже если вы уже оплатили полис</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>`
+        refEl.append(helper);
+    }
+
+    function changeHeader() {
+        document.querySelectorAll('h1, h2, h3, h4').forEach(function(e) {
+            if (e.innerHTML === 'Личный кабинет') {
+                e.innerHTML = 'Личный кабинет Е-ОСАГО для физических лиц';
+            } else { return }
+        })
+    }
+
+    changeHeader();
+    helper();
+}
+
+function loginFormHelperTest() {
+
+    function creator() {
+        var refEl = document.querySelector('head');
+        var link = document.createElement('link');
+        link.href = 'https://www.in-touch.ru/ren_marketing/css/loginForm.css';
+        link.type = 'text/css';
+        link.rel = 'stylesheet';
+        refEl.appendChild(link);
+    }
+    creator();
+
+    document.querySelector('#loginByGosuslugi').remove()
+    var a = document.querySelector('#register');
+    var b = a.parentNode;
+    a.remove();
+    var registerBtn = document.createElement('span');
+    registerBtn.innerHTML = a.outerHTML;
+    registerBtn.id = 'registerNew';
+    b.append(registerBtn);
+
+    function registrationPage() {
+        var refEl = document.querySelector('.locker_role-base');
+        var newRegPage = document.createElement('div');
+        newRegPage.id = 'newRegPage';
+        newRegPage.style = 'transform: scale(0) translate(-50%, -50%);padding: 0px 5px;margin: 0px auto;position: fixed;top: 0;left: 0;right: 0;background: white;z-index: 999;height: 100%;width: 100%;transition: all .3s;'
+        newRegPage.classList.add('locker', 'l-row', 'justify-content-center');
+        newRegPage.innerHTML = `
+        <div class="newRegPage-page">
+            <div class="newRegPage-row" style="height: 100%;">
+                <div class="col-2 hide">
+                    <div class="row">
+                        <div style="margin-top:20%;padding:16px 0px 20px 4vw;">
+                            <div class="control">
+                                <div class="control__body">
+                                    <div id="closeNewRegPage" class="text-box" style="cursor:pointer;display:flex;font-size:16px;font-family:'Gerbera';color:#50287d;line-height:140%;">
+                                        <svg style="max-width:25px;transform:rotate(180deg);margin-right:10px;position:relative;top:-5px;" class="arrow-3-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                            <g fill="none" stroke="#50287d" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+                                                <circle class="arrow-3-iconcircle" cx="16" cy="16" r="15.12"></circle>
+                                                <path class="arrow-3-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
+                                            </g>
+                                        </svg>
+                                        <p>Ко входу</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                <div class="col-5 margin-top">
+                    <div style="margin-top:20%;" class="l-col-12 login-form__column">
+                        <div class="row closeNewRegPageSecons">
+                            <div>
+                                <div class="control">
+                                    <div class="control__body">
+                                        <div id="closeNewRegPageSecond" class="text-box" style="cursor:pointer;display:flex;font-size:16px;font-family:'Gerbera';color:#50287d;line-height:140%;">
+                                            <svg style="max-width:25px;transform:rotate(180deg);margin-right:10px;position:relative;top:-5px;" class="arrow-3-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                                <g fill="none" stroke="#50287d" stroke-width="1.5" stroke-linejoin="round" stroke-miterlimit="10">
+                                                    <circle class="arrow-3-iconcircle" cx="16" cy="16" r="15.12"></circle>
+                                                    <path class="arrow-3-icon--arrow" d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"></path>
+                                                </g>
+                                            </svg>
+                                            <p>Ко входу</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="panel panel_role-base login-form__panel">
+                                <h2 style="text-align:left;padding:33px 0 0;" class="login-form__page-header header-1">Зарегистрироваться через</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="panel panel_role-base login-form__panel">    
+                                <div style="display:flex;" class="regTypeBtns">
+                                    <div id="digitalPropile" style="margin-right:43px;cursor:pointer" class="regTypeBtn">
+                                        <span>Цифровой профиль</span>
+                                        <div style="width:130px;background:#50287d;height:2px;transition:all .3s;margin-top:3px" class="textDecoration"></div>
+                                    </div>
+                                    <div id="manualInput" style="cursor:pointer" class="regTypeBtn">
+                                        <span>Ручной ввод</span>
+                                        <div style="height:2px; transition: all .3s;margin-top:3px" class="textDecoration"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">        
+                            <div class="panel panel_role-base login-form__panel">
+                                <div class="control">
+                                    <div class="control__body">
+                                        <div style="line-height:24px;" class="text-box">
+                                            <p>Самый быстрый способ регистрации: все данные мы подтянем автоматически. Вам нужно будет 
+                                            их только проверить. У вас должна быть подтвержденная запись на Госуслугах и вы не должны 
+                                            быть зарегистрированы на сайте renins.ru.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">    
+                            <div class="panel panel_role-base login-form__panel width100">
+                                <div class="control">
+                                    <div class="control__body">
+                                        <button style="margin:0;background-color:#50287d;color:white;border-radius:2px;" id="dp" class="button button_role-primary login-form__button-next">Приступить</button>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="row">    
+                            <div class="panel panel_role-base login-form__panel">
+                                <div class="control control_inline">
+                                    <div class="control__body">
+                                        <span id="loginByGosuslugiSecond" class="button button_role-text">Перейти к регистрации через Госуслуги</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>      
+                    </div>
+                </div>
+                <div class="col-5 hide" style="background:#B1A1F5;display: flex;">
+                    <div class="l-col-12 login-form__column">    
+                        <div style="margin-top:60%;" class="panel panel_role-base login-form__panel">
+                            <div class="control">
+                                <div class="control__body">
+                                    <div class="text-box" style="max-width:27vw;;font-size:2vw;font-family:'Gerbera';font-weight:500;line-height:3vw;color:#ffffff;">
+                                        <p>Автоматически заполним данные быстрее, чем на Госуслугах!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>`
+        refEl.append(newRegPage);
+
+        function redirect() {
+            var a = document.querySelector('#manualInput');
+            a.addEventListener('click', function(e) {
+                window.location.href = 'https://www.renins.ru/iris/di/UserRegistration'
+            })
+        }
+        redirect();
+
+        function changeDisplay() {
+            var a = document.querySelectorAll('#registerNew, #closeNewRegPageSecond , #closeNewRegPage');
+            var b = document.querySelector('#newRegPage');
+            var c = document.querySelector('#LoginForm');
+            c.style.setProperty('transition', 'all .3s');
+            // var b = document.querySelector('#closeNewRegPage');
+            a.forEach(function(i) {
+                i.addEventListener('click', function() {
+                    if (i.id === 'registerNew') {
+                        b.style.removeProperty('transform');
+                        c.style.setProperty('transform', 'scale(0) translate(-50%, -50%)');
+                    }
+                    if (i.id === 'closeNewRegPage' || i.id === 'closeNewRegPageSecond') {
+                        c.style.removeProperty('transform');
+                        b.style.setProperty('transform', 'scale(0) translate(-50%, -50%)');
+                    }
+                })
+            })
+        }
+        changeDisplay();
+        (function() {
+            var a = document.querySelectorAll('.regTypeBtn');
+            a.forEach(function(i) {
+                i.addEventListener('mouseenter', function(e) {
+                    var b = this.offsetWidth;
+                    var c = this.childNodes[3];
+                    c.style.setProperty(`width`, `${b}px`);
+                    c.style.setProperty('background', '#50287d');
+                });
+                i.addEventListener('mouseleave', function(e) {
+                    if (this.id === 'manualInput') {
+                        var d = this.childNodes[3];
+                        d.style.removeProperty('width');
+                        d.style.removeProperty('background');
+                    }
+                })
+            })
+        }())
+    }
+
+    function helper() {
+        var refEl = document.querySelectorAll('.l-row')[1]
+        var helper = document.createElement('div');
+        helper.classList.add('l-col-12', 'login-form__column');
+        helper.innerHTML = `
+        <div class="">
+            <div class="panel panel_role-base login-form__panel">
+                
+                <div style="margin: 21px 0;" class="container">
+                    <div class="l-row justify-content-center">
+                        <div style="padding: 6px 0;" class="col col-3">
+                            <div class="control">
+                                <div class="img">
+                                    <img style="width: 60%;" src="/Media/Default/Page/GTM_pixels/img/house.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-9">
+                            <div class="control">
+                                <div class="control-caption control-caption_role-base">
+                                    <h3 class="control-caption__text">Здесь хранятся ваши электронные полисы ОСАГО</h3>
+                                </div>
+                                <div class="control__body">
+                                    <div class="text-box">
+                                        <p>Здесь можно сделать новый расчет или заявить о страховом случае on-line</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin: 20px 0;" class="container">
+                    <div class="l-row justify-content-center">
+                        <div style="padding: 6px 0;" class="col col-3">
+                            <div class="control">
+                                <div class="img">
+                                    <img style="width: 60%;" src="/Media/Default/Page/GTM_pixels/img/clock.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-9">
+                            <div class="control">
+                                <div class="control-caption control-caption_role-base">
+                                    <h3 class="control-caption__text">Быстрое продление полиса</h3>
+                                </div>
+                                <div class="control__body">
+                                    <div class="text-box">
+                                        <p>Ваши данные уже будет заполнены, вам нужно только проверить</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin: 21px 0;" class="container">
+                    <div class="l-row justify-content-center">
+                        <div style="padding: 6px 0;" class="col col-3">
+                            <div class="control">
+                                <div class="img">
+                                    <img style="width: 60%;" src="/Media/Default/Page/GTM_pixels/img/sheet.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-9">
+                            <div class="control">
+                                <div class="control-caption control-caption_role-base">
+                                    <h3 class="control-caption__text">Удобное внесение изменений</h3>
+                                </div>
+                                <div class="control__body">
+                                    <div class="text-box">
+                                        <p>Все изменения можно внести онлайн, даже если вы уже оплатили полис</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>`
+        refEl.append(helper);
+    }
+
+    function changeHeader() {
+        document.querySelectorAll('h1, h2, h3, h4').forEach(function(e) {
+            if (e.innerHTML === 'Личный кабинет') {
+                e.innerHTML = 'Личный кабинет Е-ОСАГО для физических лиц';
+            } else { return }
+        })
+    }
+
+    changeHeader();
+    helper();
+    registrationPage();
+}
